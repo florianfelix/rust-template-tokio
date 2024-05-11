@@ -1,0 +1,27 @@
+[package]
+name = "bin"
+version = "0.1.0"
+edition = "2021"
+
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = 'z'
+
+[profile.dev]
+opt-level = 1
+[profile.dev.package."*"]
+opt-level = 3
+
+
+[dependencies]
+# Template dependencies
+tokio = { version = "1", features = ["full"] }
+tracing = { version = "0.1.40", features = [] }
+tracing-subscriber = { version = "0.3.18", features = [] }
+tracing-forest = { version = "0.1.6", features = ["tokio", "ansi"] }
+
+# Common deps
+serde = { version = "1", features = ["derive"]}
+serde_json = "1"
+# serde_with = "3.8"
